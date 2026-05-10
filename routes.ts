@@ -250,8 +250,10 @@ app.get("/api/posts/:id/user-vote", authenticateToken, async (req: Request, res:
         const newPost = await db
           .insert(blogPosts)
           .values({
-            ...input,
-            authorId: (req as any).user.id,
+            title: req.body.title,
+            description: req.body.description,
+            genre: req.body.genre,
+            authorId: req.body.authorId,
           })
           .returning();
 
