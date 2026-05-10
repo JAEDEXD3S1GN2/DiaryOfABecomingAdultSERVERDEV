@@ -273,29 +273,60 @@ export const insertAdminAnalyticsSchema = createInsertSchema(adminAnalytics).omi
 /**
  * TypeScript Types
  */
+// ✅ Replace all createInsertSchema calls with these manual schemas
 
-export type User = typeof users.$inferSelect;
-export type InsertUser = z.infer<typeof insertUserSchema>;
+export const insertUserSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  password: z.string(),
+});
 
-export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
+export const insertBlogPostSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  genre: z.string(),
+  thumbnailUrl: z.string().optional().nullable(),
+  videoUrl: z.string().optional().nullable(),
+  images: z.array(z.string()).optional().nullable(),
+  authorId: z.number().optional().nullable(),
+});
 
-export type Comment = typeof comments.$inferSelect;
-export type InsertComment = z.infer<typeof insertCommentSchema>;
+export const insertCommentSchema = z.object({
+  content: z.string(),
+  userId: z.number(),
+  postId: z.number(),
+});
 
-export type Message = typeof messages.$inferSelect;
-export type InsertMessage = z.infer<typeof insertMessageSchema>;
+export const insertMessageSchema = z.object({
+  fullName: z.string(),
+  email: z.string().email(),
+  message: z.string(),
+});
 
-export type HomeImage = typeof homeImages.$inferSelect;
+export const insertUserPostVoteSchema = z.object({
+  userId: z.number(),
+  postId: z.number(),
+  voteType: z.string(),
+});
 
-export type UserPostVote = typeof userPostVotes.$inferSelect;
-export type InsertUserPostVote = z.infer<typeof insertUserPostVoteSchema>;
+export const insertUserFavoriteSchema = z.object({
+  userId: z.number(),
+  postId: z.number(),
+});
 
-export type UserFavorite = typeof userFavorites.$inferSelect;
-export type InsertUserFavorite = z.infer<typeof insertUserFavoriteSchema>;
+export const insertPostViewSchema = z.object({
+  postId: z.number(),
+  userId: z.number().optional().nullable(),
+  ipAddress: z.string().optional().nullable(),
+  userAgent: z.string().optional().nullable(),
+});
 
-export type PostView = typeof postViews.$inferSelect;
-export type InsertPostView = z.infer<typeof insertPostViewSchema>;
-
-export type AdminAnalytics = typeof adminAnalytics.$inferSelect;
-export type InsertAdminAnalytics = z.infer<typeof insertAdminAnalyticsSchema>;
+export const insertAdminAnalyticsSchema = z.object({
+  totalUsers: z.number().optional(),
+  totalPosts: z.number().optional(),
+  totalComments: z.number().optional(),
+  totalMessages: z.number().optional(),
+  totalViews: z.number().optional(),
+  totalLikes: z.number().optional(),
+  totalDislikes: z.number().optional(),
+});
