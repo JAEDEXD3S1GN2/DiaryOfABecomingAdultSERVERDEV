@@ -5,7 +5,7 @@ import "dotenv/config";
 const getDbCredentials = () => {
   if (process.env.DATABASE_URL) {
     return {
-      url: process.env.DATABASE_URL,
+      url: process.env.DATABASE_URL + "?sslmode=require",
     };
   }
 
