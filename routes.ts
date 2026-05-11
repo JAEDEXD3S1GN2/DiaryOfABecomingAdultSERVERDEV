@@ -253,7 +253,10 @@ app.get("/api/posts/:id/user-vote", authenticateToken, async (req: Request, res:
             title: req.body.title,
             description: req.body.description,
             genre: req.body.genre,
-            authorId: req.body.authorId,
+            authorId: (req as any).user.id,
+            thumbnailUrl: req.body.thumbnailUrl ?? null,
+            videoUrl: req.body.videoUrl ?? null,
+            images: req.body.images ?? null,
           })
           .returning();
 
