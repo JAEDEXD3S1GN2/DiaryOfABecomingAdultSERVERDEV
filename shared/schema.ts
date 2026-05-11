@@ -220,61 +220,6 @@ export const postViewsRelations = relations(postViews, ({ one }) => ({
 /**
  * Zod Schemas for validation
  */
-
-export const insertUserSchema = createInsertSchema(users).omit({
-  id: true,
-  createdAt: true,
-  role: true,
-  blogsOpened: true,
-  commentsMade: true,
-});
-
-export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-  views: true,
-  likes: true,
-  dislikes: true,
-});
-
-export const insertCommentSchema = createInsertSchema(comments).omit({
-  id: true,
-  createdAt: true,
-});
-
-export const insertMessageSchema = createInsertSchema(messages).omit({
-  id: true,
-  createdAt: true,
-});
-
-export const insertUserPostVoteSchema = createInsertSchema(userPostVotes).omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-});
-
-export const insertUserFavoriteSchema = createInsertSchema(userFavorites).omit({
-  id: true,
-  createdAt: true,
-});
-
-export const insertPostViewSchema = createInsertSchema(postViews).omit({
-  id: true,
-  viewedAt: true,
-});
-
-export const insertAdminAnalyticsSchema = createInsertSchema(adminAnalytics).omit({
-  id: true,
-  updatedAt: true,
-  createdAt: true,
-});
-
-/**
- * TypeScript Types
- */
-// ✅ Replace all createInsertSchema calls with these manual schemas
-
 export const insertUserSchema = z.object({
   name: z.string(),
   email: z.string().email(),
