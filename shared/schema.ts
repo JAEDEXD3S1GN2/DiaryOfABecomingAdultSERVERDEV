@@ -1,5 +1,4 @@
 import { pgTable, text, serial, integer, boolean, timestamp, primaryKey, uniqueIndex } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations, isNotNull } from "drizzle-orm";
 
