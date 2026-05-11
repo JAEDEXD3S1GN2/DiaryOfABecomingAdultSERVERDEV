@@ -275,3 +275,32 @@ export const insertAdminAnalyticsSchema = z.object({
   totalLikes: z.number().optional(),
   totalDislikes: z.number().optional(),
 });
+
+/**
+ * TypeScript Types*/
+
+export type User = typeof users.$inferSelect;
+export type InsertUser = z.infer<typeof insertUserSchema>;
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
+
+export type Comment = typeof comments.$inferSelect;
+export type InsertComment = z.infer<typeof insertCommentSchema>;
+
+export type Message = typeof messages.$inferSelect;
+export type InsertMessage = z.infer<typeof insertMessageSchema>;
+
+export type HomeImage = typeof homeImages.$inferSelect;
+
+export type UserPostVote = typeof userPostVotes.$inferSelect;
+export type InsertUserPostVote = z.infer<typeof insertUserPostVoteSchema>;
+
+export type UserFavorite = typeof userFavorites.$inferSelect;
+export type InsertUserFavorite = z.infer<typeof insertUserFavoriteSchema>;
+
+export type PostView = typeof postViews.$inferSelect;
+export type InsertPostView = z.infer<typeof insertPostViewSchema>;
+
+export type AdminAnalytics = typeof adminAnalytics.$inferSelect;
+export type InsertAdminAnalytics = z.infer<typeof insertAdminAnalyticsSchema>;
