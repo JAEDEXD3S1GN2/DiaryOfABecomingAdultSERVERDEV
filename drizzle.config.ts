@@ -30,5 +30,9 @@ export default defineConfig({
   out: "./migrations",
   schema: "./shared/schema.ts",
   dialect: "postgresql",
-  dbCredentials: getDbCredentials(),
+  dbCredentials: { getDbCredentials(),
+            ssl: {
+      rejectUnauthorized: false, // ✅ fixes self-signed cert error
+    },
+  },                
 });
